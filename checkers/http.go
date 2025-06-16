@@ -34,6 +34,7 @@ const (
 type HTTPConfig struct {
 	URL        *url.URL      // Required
 	Method     string        // Optional (default GET)
+	Headers    http.Header   // Optional
 	Payload    interface{}   // Optional
 	StatusCode int           // Optional (default 200)
 	Expect     string        // Optional
@@ -101,6 +102,12 @@ func (h *HTTP) do() (*http.Response, error) {
 	req, err := http.NewRequest(h.Config.Method, h.Config.URL.String(), payload)
 	if err != nil {
 		return nil, fmt.Errorf("Unable to create new HTTP request for HTTPMonitor check: %v", err)
+	}
+
+	for k, vs := range h.Config.Headers {
+		for _, v := range vs {
+			req.Header.Add(k, v)
+		}
 	}
 
 	resp, err := h.Config.Client.Do(req)
