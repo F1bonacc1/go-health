@@ -285,6 +285,33 @@ func TestHTTPStatus(t *testing.T) {
 	})
 }
 
+func TestHTTPHeaders(t *testing.T) {
+	RegisterTestingT(t)
+
+	t.Run("Happy path: headers are included in request", func(t *testing.T) {
+		ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			Expect(r.Header["X-Some-Header"]).To(Equal([]string{"first", "second"}))
+			w.WriteHeader(http.StatusOK)
+		}))
+		defer ts.Close()
+
+		testURL, err := url.Parse(ts.URL)
+		Expect(err).ToNot(HaveOccurred())
+
+		cfg := &HTTPConfig{
+			URL:     testURL,
+			Headers: http.Header{"X-Some-Header": []string{"first", "second"}},
+		}
+
+		checker, err := NewHTTP(cfg)
+		Expect(err).ToNot(HaveOccurred())
+
+		data, err := checker.Status()
+		Expect(err).ToNot(HaveOccurred())
+		Expect(data).To(BeNil())
+	})
+}
+
 type CustomTransport struct{}
 
 func newTransport() *CustomTransport {
