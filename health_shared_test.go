@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/InVisionApp/go-health/v2/fakes"
+	"github.com/f1bonacc1/go-health/v2/fakes"
 	"github.com/InVisionApp/go-logger"
 )
 

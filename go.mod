@@ -1,4 +1,4 @@
-module github.com/InVisionApp/go-health/v2
+module github.com/f1bonacc1/go-health/v2
 
 require (
 	github.com/DATA-DOG/go-sqlmock v1.3.3

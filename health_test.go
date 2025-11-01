@@ -8,7 +8,7 @@ import (
 
 	. "github.com/onsi/gomega"
 
-	"github.com/InVisionApp/go-health/v2/fakes"
+	"github.com/f1bonacc1/go-health/v2/fakes"
 	"github.com/InVisionApp/go-logger"
 	"github.com/InVisionApp/go-logger/shims/testlog"
 )
@@ -645,7 +645,7 @@ func TestStatusListenerOnFail(t *testing.T) {
 		h.StatusListener = &MockStatusListener{}
 
 		// let the health check run once
-		time.Sleep(5 * time.Millisecond)
+		time.Sleep(15 * time.Millisecond)
 
 		Expect(string(testLogger.Bytes())).To(ContainSubstring("FOOCHECK"))
 	})

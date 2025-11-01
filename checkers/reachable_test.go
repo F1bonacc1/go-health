@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/InVisionApp/go-health/v2/checkers"
-	"github.com/InVisionApp/go-health/v2/fakes"
-	"github.com/InVisionApp/go-health/v2/fakes/netfakes"
+	"github.com/f1bonacc1/go-health/v2/checkers"
+	"github.com/f1bonacc1/go-health/v2/fakes"
+	"github.com/f1bonacc1/go-health/v2/fakes/netfakes"
 	"github.com/stretchr/testify/assert"
 )
 
