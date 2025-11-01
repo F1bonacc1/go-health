@@ -2,6 +2,7 @@ module github.com/f1bonacc1/go-health/v2
 
 require (
 	github.com/DATA-DOG/go-sqlmock v1.3.3
+	github.com/InVisionApp/go-health/v2 v2.1.4
 	github.com/InVisionApp/go-logger v1.0.1
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
 	github.com/alicebob/gopher-json v0.0.0-20180125190556-5a6b3ba71ee6 // indirect
